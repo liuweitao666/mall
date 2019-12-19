@@ -86,7 +86,7 @@
                         this.themeTopYs.push(this.$refs.detail.$el.offsetTop)
                         this.themeTopYs.push(this.$refs.params.$el.offsetTop)
                         this.themeTopYs.push(this.$refs.recommend.$el.offsetTop)
-                        console.log(this.themeTopYs)
+                        // console.log(this.themeTopYs)
                     }
                 )
 
@@ -152,9 +152,11 @@
                 pushCart.title= this.goods.title
                 pushCart.desc = this.goods.desc
                 pushCart.realPrice = this.goods.realPrice
+                pushCart.lowNowPrice = this.goods.lowNowPrice
                 pushCart.Iid = this.Iid
                 pushCart.count = 1
-                // console.log(this.goods);
+                pushCart.flag = true
+                console.log(pushCart);
                 this.$store.dispatch('pushCart',pushCart)
             }
         },

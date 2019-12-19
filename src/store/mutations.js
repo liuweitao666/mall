@@ -13,6 +13,9 @@ export const mutations ={
     },
     addCounter(state,counter){
         counter.count++
+    },
+    changeflag(state){
+        console.log(state.pushCart.flag)
+        state.pushCart.flag = !state.pushCart.flag
     }
-
 }

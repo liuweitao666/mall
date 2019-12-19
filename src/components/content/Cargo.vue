@@ -5,10 +5,8 @@
         </NavBarItem>
 
         <div v-for="(item,index) in list" :key="index" class="container">
-
-
             <div class="image">
-                <div class="choose">
+                <div class="choose" @click="option(index)" :class="{chooseaction:item.flag}">
                 </div>
                 <img :src="item.image" alt="">
             </div>
@@ -18,19 +16,27 @@
                 <div class="price"><span>{{item.realPrice}}</span>X{{item.count}}</div>
             </div>
         </div>
+        <bottom-bar :count="count"/>
     </div>
 </template>
 
 <script>
-    import NavBarItem from "../common/navbar/NavBarItem";
+    import NavBarItem from "../common/navbar/NavBarItem"
+    import bottomBar from "./bottomBar/bottomBar"
     export default {
         name: "Cargo",
         components:{
-            NavBarItem
+            NavBarItem,
+            bottomBar
+        },
+        created(){
+            // console.log(this.list);
         },
         data(){
             return {
-
+                currentindex:false,
+                flags:false,
+                count:0
             }
         },
         computed:{
@@ -38,8 +44,20 @@
                return this.$store.state.pushCart
             }
         },
-        created(){
-            console.log(this.list);
+        methods:{
+            option(index){
+                console.log(this.list)
+                this.list[index].flag =!this.list[index].flag
+                for (let i=0;i<this.list.length;i++){
+                    if(this.list[i].flag){
+                        console.log(this.list[i].lowNowPrice);
+                        this.count+=this.list[i].lowNowPrice
+                    }else if(this.count!==0 && this.list[i].flag===false){
+                        this.count-=this.list[i].lowNowPrice
+                    }
+                }
+                console.log(this.count)
+            }
         }
     }
 </script>
@@ -66,6 +84,10 @@
         background: #42b983;
         border-radius: 50%;
     }
+    .container .chooseaction{
+        background: peachpuff;
+    }
+
     .container .title{
         white-space:nowrap;
         text-overflow:ellipsis;
