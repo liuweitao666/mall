@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class="scores">
-                <div v-for="(item,index) in shops.score">
+                <div v-for="(item,index) in shops.score" :key="index">
                     <span>{{item.name}}</span>
                     <span>{{item.score}} </span>
                     <span class="span" :class="{'spanRed':item.isBetter}"> {{item.isBetter?'高':'低'}}</span>

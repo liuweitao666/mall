@@ -9,7 +9,7 @@
         <BScrolls class="wrapper" ref="Scroll" @pullingUp="pullingUp" :pull-up="true" :SwiperTop="SwiperTop" @onscroll="onscroll">
         <Header :banner="banner" @swiperimageload="swiperimageload"></Header>
         <Recommend :recommend="recommend"></Recommend>
-        <TabContent :titles="['流行','潮流','爆款']" ref="child" @getGoods="getGoods" :class="{fixed:showtabcontent}" @ChangeClass="ChangeClass"></TabContent>
+        <TabContent :titles="['流行','潮流','爆款']" ref="child1" @getGoods="getGoods" :class="{fixed:showtabcontent}" @ChangeClass="ChangeClass"></TabContent>
         <Goods :Goods = "goods[types].list"></Goods>
         </BScrolls>
         <BackTop @click.native="BackTop" ></BackTop>
@@ -118,7 +118,7 @@
             },
             swiperimageload(){
 
-                this.SwiperTop = this.$refs.child.$el.offsetTop;
+                this.SwiperTop = this.$refs.child1.$el.offsetTop;
                 // console.log(this.SwiperTop);
             },
             onscroll(position){

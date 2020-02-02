@@ -1,11 +1,11 @@
 <template>
     <div class="bottombar">
         <div class="bottombar-left">
-            <div></div>
-            <span>全选 {{parseInt(count)}}</span>
+            <div @click="allcheck" :class="{checked:Allchk}" class="allchance"></div>
+            <span>全选{{'￥'+sum}}</span>
         </div>
-        <div class="counter">
-            结算
+        <div class="counter" @click="toast">
+            结算{{'('+count+')'}}
         </div>
     </div>
 </template>
@@ -13,16 +13,39 @@
 <script>
     export default {
         name: "bottomBar",
-        methods:{
 
+        methods:{
+            allcheck(){
+                // console.log(123);
+                this.$emit('Allcheck')
+            },
+            toast(){
+                if(this.count === 0){
+                    this.$Toast.show('请添加商品',1000)
+                }
+            }
         },
         props:{
             count:{
                 type:'',
                 default(){
-                    return 1
+                    return 0
                 }
+            },
+            Allchk:{
+                type:Boolean,
+                default:false
+            },
+            sum:{
+                type:'',
+                default:0
             }
+        },
+        components:{
+
+        },
+        created() {
+            console.log(this.sum)
         }
     }
 </script>
@@ -36,13 +59,14 @@
         display: flex;
         justify-content: space-between;
         width: 100%;
+        background: #ffffff;
     }
     .bottombar-left{
         padding: 10px;
         display: flex;
         align-items: center;
     }
-    .bottombar-left div{
+    .bottombar-left .allchance{
         width: 14px;
         height: 14px;
         background: #42b983;
@@ -54,8 +78,8 @@
         color: #fff;
         padding: 10px 15px;
     }
-    .checked{
-        background: #42b983;
-
+    .bottombar-left .checked{
+        background: peachpuff;
     }
+
 </style>

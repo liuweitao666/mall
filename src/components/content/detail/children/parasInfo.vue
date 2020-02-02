@@ -1,11 +1,11 @@
 <template>
-    <div class="container">
+    <div class="container" v-if="itemParams">
         <table v-for="item in itemParams.tables">
-            <tr v-for="tr in item" class="tr">
+            <tr v-for="tr in item" class="tr" >
                 <td v-for="td in tr">{{td}}</td>
             </tr>
         </table>
-        <div class="params" v-for="item in itemParams.set">
+        <div class="params" v-for="(item,index) in itemParams.set" :key="index">
             <span>{{item.key}}</span>
             <span>{{item.value}}</span>
         </div>

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-if="DetailInfo">
         <div class="info-title">{{desc}}</div>
         <div v-for="(item,index) in this.DetailInfo.detailImage" :key="index" class="image">
             <div class="list-key">{{item.key}}</div>
@@ -38,10 +38,10 @@
         },
         methods:{
             imageload(){
-
-                if(++this.counter === this.imagecounter){
-                    this.$emit('imageLoad')
-                }
+                this.$emit('imageLoad')
+                // if(++this.counter === this.imagecounter){
+                    
+                // }
             }
         }
     }

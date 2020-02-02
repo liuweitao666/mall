@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "vue-cli-service serve --public 211.168.78.161:8080",
     "build": "vue-cli-service build"
   },
   "dependencies": {
@@ -11,6 +11,8 @@
     "better-scroll": "^1.15.2",
     "core-js": "^3.4.3",
     "element-ui": "^2.13.0",
+    "fastclick": "^1.0.6",
+    "lazyload": "^2.0.0-rc.2",
     "mint-ui": "^2.2.13",
     "vue": "^2.6.10",
     "vue-axios": "^2.1.5",

@@ -1,7 +1,7 @@
 <template>
     <div v-show="recommends.length>0" class="container">
         <div v-for="(item,index) in recommends" :key="index" class="recommend">
-            <img :src="item.image" alt="">
+            <img :src="item.image" alt="" @load="commendimg">
             <div class="recommend-title">{{item.title}}</div>
             <span class="span">{{item.price}}</span>
             <span>{{item.itemLikes}}</span>
@@ -23,7 +23,13 @@
         created() {
             // console.log(this.recommends);
             if(this.recommends.length>0){
-                console.log(this.recommends);
+                // console.log(this.recommends);
+            }
+        },
+        methods:{
+            commendimg(){
+                
+                this.$emit('imgload')
             }
         }
     }

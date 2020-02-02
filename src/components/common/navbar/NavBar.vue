@@ -1,8 +1,9 @@
 <template>
     <div class="nav">
         <NavBarItem  class="home-nav">
-            <div slot="item-center">购物乐</div>
+            <div slot="item-center">{{title}}</div>
         </NavBarItem>
+        
     </div>
 </template>
 
@@ -12,6 +13,18 @@
         name: "NavBar",
         components:{
             NavBarItem
+        },
+        data(){
+            return{
+                title:''
+            }
+        },
+        created(){
+            if(this.$route.path==='/Catalog'){
+                this.title='商品分类'
+            }else{
+                this.title='购物街'
+            }
         }
     }
 </script>
